@@ -41,10 +41,7 @@ public class SunZooApplication {
 			Scanner scanner = new Scanner(System.in);
 			Scanner scannerForAddCage = new Scanner(System.in);
 			int initialChoice;
-<<<<<<< HEAD
-			
-=======
->>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+
 			// Process
 			do {
 				System.out.println("WelCome to SunWord's Zoo:\nWhat do you want to do\n1. Login\n2. Sign up\n3. Exit");
@@ -109,10 +106,10 @@ public class SunZooApplication {
 								} while (addedAnimalChoice != 3);
 								// Process's follow: check array size, if there is just 1, and if just two, we
 								// hard coded this into 2 patter, only1 animal, and if 2, that must be 1 lion
-<<<<<<< HEAD
+
 								// Process's follow: we don't hard-code anything, we add animal to a List, and
 								// then use cage constructor to generate addedCage and then add that cage into
-=======
+
 								// and
 								// 1 dolphin
 								// if (addedAnimalList.size() >= 2) {
@@ -140,7 +137,7 @@ public class SunZooApplication {
 
 								// Process's follow: we don't hard-code anything, we add animal to a List, and
 								// then use cage constructor to generate addedcage and then add that cage into
->>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+
 								// Zoo via zoo.addCage function
 								SunZoo.addCage(new Cage(addedPrice, addedCageAnimal));
 								break;
@@ -149,13 +146,12 @@ public class SunZooApplication {
 								System.out.print("Enter specific cage: ");
 								int selectedCageNumber = scanner.nextInt();
 								Cage selectedCage = SunZoo.getCages().get(selectedCageNumber - 1);
-<<<<<<< HEAD
-								int addedAnimalChoice;
-=======
+
+
 //								ArrayList<Animal> addedCageAnimal = new ArrayList<>();
 								int addedAnimalChoice;
 								// ArrayList<String> addedAnimalList = new ArrayList<String>();
->>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+
 								do {
 									System.out.println("What kind of animals:");
 									System.out.println("1. Lion");
@@ -197,10 +193,9 @@ public class SunZooApplication {
 					System.out.println(accountArr);
 					Boolean accountExistFlag = false;
 
-<<<<<<< HEAD
-=======
+
 					// Check authority
->>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+
 					for (Account acc : accountArr) {
 						if (acc.getAccount().equals(account) && acc.getPwd().equals(pwd)) {
 							accountExistFlag = true;
@@ -278,11 +273,8 @@ public class SunZooApplication {
 					String signupPwd = scanner.next();
 					Account signedupAccount = new Account(signupAccount, signupPwd);
 
-<<<<<<< HEAD
-					// Add accounts to Account table
-=======
 					// Add account to Account table
->>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+
 					context.getBean(AccountJdbcRepository.class).insertAccount(signedupAccount);
 					break;
 				}

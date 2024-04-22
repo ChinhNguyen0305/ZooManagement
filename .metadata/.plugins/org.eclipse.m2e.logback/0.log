@@ -1547,3 +1547,7 @@ org.eclipse.core.runtime.CoreException: Launch configuration ZooRunner reference
 2024-04-11 21:32:10,799 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-04-11 21:32:10,802 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory E:\SunZoo 2\SunZoo\src\test\resources
 >>>>>>> b61331bdc2cd6ea067b360557c740b82eec36123
+2024-04-22 18:59:45,115 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-04-22 18:59:52,147 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-04-22 18:59:52,191 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-04-22 18:59:52,199 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory E:\SunZoo\SunZoo\src\test\resources
