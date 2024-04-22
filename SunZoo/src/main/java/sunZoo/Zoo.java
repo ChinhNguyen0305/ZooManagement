@@ -18,9 +18,14 @@ public class Zoo {
 	private ArrayList<Plan> plans = new ArrayList<Plan>();
 	private int netWorth;
 
-	// Jdbc
+	//Jdbc
 	@Autowired
 	private AccountJdbcRepository repository;
+	
+	//No arg Constructor
+	public Zoo() {
+		
+	}
 
 	// Constructor
 	public Zoo(String name, String address) {
@@ -45,10 +50,6 @@ public class Zoo {
 				animal.minusHealthAfterVisited();
 			}
 		}
-	}
-
-	public void addAnimaltoCage(Animal animal, int Cage) {
-		repository.addAnimal(animal, Cage);
 	}
 
 	// Visit and action <= This is obsolete

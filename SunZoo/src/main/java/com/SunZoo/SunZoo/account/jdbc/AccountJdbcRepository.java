@@ -12,7 +12,7 @@ import sunZoo.Animal;
 
 @Repository
 public class AccountJdbcRepository {
-	//Think about this as a class and method like insert is just like normal method, which can be used at AccountJdbcCommandLineRunner
+	//Think about this as a class and method like insert is just a normal method, which can be used at AccountJdbcCommandLineRunner
 	//We need to add auto wired, if not, It Cannot invoke
 	@Autowired
 	private JdbcTemplate accountJdpcTemplate;

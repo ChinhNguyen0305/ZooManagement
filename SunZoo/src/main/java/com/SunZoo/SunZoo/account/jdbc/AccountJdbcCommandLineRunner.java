@@ -17,10 +17,6 @@ public class AccountJdbcCommandLineRunner implements CommandLineRunner {
 		//Test insert query
 		repository.insertAccount(new Account("theSun", "theSun"));
 		
-		//Test delete query
-//		repository.deleteByAccount("anhChin");		
-//		System.out.println(repository.findByAccount("admin"));
-//		System.out.println(repository.findByAccount("theSun"));
 	}
 
 }

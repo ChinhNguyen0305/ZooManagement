@@ -2,10 +2,7 @@ package sunZoo;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.SunZoo.SunZoo.account.Account;
 
 import action.Action;
 import action.TakeARide;
@@ -27,25 +24,22 @@ public class Cage {
 	private static Action[] action = { touch, takeARide };
 
 	// Constructor
+	public Cage() {
+
+	}
 
 	public Cage(int price, ArrayList<Animal> animal) {
 		this.price = price;
 		this.hygiene = 5; // The initial hygiene is always 5
 		this.animals = animal;
 		this.No = Cage.number;
-
 	}
 
 	// Behavior
-
 	public void addAnimal(Animal animal) {
 		this.animals.add(animal);
 
 	}
-
-//	public ArrayList<Action> getAction() {
-//		return action;
-//	}
 
 	public int getPrice() {
 		return price;
@@ -93,8 +87,7 @@ public class Cage {
 	}
 
 	public String toString() {
-		return String.format(
-				"This is cage No.%d, It cost %d$ to visit.\nAnimals status:\n%s\nHygine: %d \n", No, price,
+		return String.format("This is cage No.%d, It cost %d$ to visit.\nAnimals status:\n%s\nHygine: %d \n", No, price,
 				animals.toString(), hygiene);
 	}
 
