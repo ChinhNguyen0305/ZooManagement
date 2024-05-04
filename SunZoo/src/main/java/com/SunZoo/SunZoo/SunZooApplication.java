@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.SunZoo.SunZoo.account.Account;
+import com.SunZoo.SunZoo.account.VisitorAccount;
 import com.SunZoo.SunZoo.account.jdbc.AccountJdbcRepository;
 
 import aquarius.Dolphin;
@@ -27,7 +27,7 @@ public class SunZooApplication {
 
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				SunZooApplication.class)) {
-						// Add dummy Cage1
+			// Add dummy Cage1
 			SunZoo.addCage(new Cage(200, new ArrayList<Animal>(List.of(new Lion("the King", 10)))));
 			// Add dummy Cage2
 			SunZoo.addCage(new Cage(150, new ArrayList<Animal>(
@@ -36,7 +36,7 @@ public class SunZooApplication {
 			SunZoo.addCage(new Cage(110, new ArrayList<Animal>(List.of(new Lion("the cup", 10)))));
 			// Add dummy Cage4
 			SunZoo.addCage(new Cage(220, new ArrayList<Animal>(List.of(new Dolphin("the smart day", 10)))));
-			
+
 			// Scanners
 			Scanner scanner = new Scanner(System.in);
 			Scanner scannerForAddCage = new Scanner(System.in);
@@ -147,7 +147,6 @@ public class SunZooApplication {
 								int selectedCageNumber = scanner.nextInt();
 								Cage selectedCage = SunZoo.getCages().get(selectedCageNumber - 1);
 
-
 //								ArrayList<Animal> addedCageAnimal = new ArrayList<>();
 								int addedAnimalChoice;
 								// ArrayList<String> addedAnimalList = new ArrayList<String>();
@@ -189,14 +188,12 @@ public class SunZooApplication {
 					}
 
 					// Retrieve Account from DB
-					ArrayList<Account> accountArr = context.getBean(AccountJdbcRepository.class).findAllAcc();
+					ArrayList<VisitorAccount> accountArr = context.getBean(AccountJdbcRepository.class).findAllAcc();
 					System.out.println(accountArr);
 					Boolean accountExistFlag = false;
 
-
 					// Check authority
-
-					for (Account acc : accountArr) {
+					for (VisitorAccount acc : accountArr) {
 						if (acc.getAccount().equals(account) && acc.getPwd().equals(pwd)) {
 							accountExistFlag = true;
 							break;
@@ -208,27 +205,33 @@ public class SunZooApplication {
 							System.out.println("****Welcom to SunWorldZoo****\nWhat do you want to do.");
 							System.out.println("1. Visit.");
 							System.out.println("2. Exit console.");
+
+							// Retrieve visited visitor
+							VisitorAccount visitedAccount = context.getBean(AccountJdbcRepository.class)
+									.findByAccount(account);
 							visitorChoice = scanner.nextInt();
 
 							switch (visitorChoice) {
 							case 1: {
 								System.out.println("Choose cage to vist");
 								int visitedCage = scanner.nextInt();
-								
+								int visitedCagePrice = SunZoo.getCages().get(visitedCage - 1).getPrice();
+
 								final int justVisit = 1;
 								final int visitAndAction = 2;
-								
-								System.out.println("Do you want to just vist or action\n1. Just visit\n2. Visit and take action");
+
+								System.out.println(
+										"Do you want to just vist or action\n1. Just visit\n2. Visit and take action");
 								int visitOrVisitAndAction = scanner.nextInt();
-								
-
 								int cageAmount = SunZoo.getCages().size();
-								//Check if choose cage within cage amount
+								// Check if choose cage within cage amount
 								if (visitedCage <= cageAmount) {
+									// Action
 									switch (visitOrVisitAndAction) {
-									case justVisit: {
 
+									case justVisit: {
 										SunZoo.visit(visitedCage);
+										visitedAccount.increaseSpentAmount(visitedCagePrice);
 										break;
 									}
 									case visitAndAction: {
@@ -237,27 +240,35 @@ public class SunZooApplication {
 										int selectedAction = scanner.nextInt();
 										final int visitAndTouch = 1;
 										final int visitAndTakeARide = 2;
+										visitedAccount.increaseSpentAmount(visitedCagePrice);
 
 										switch (selectedAction) {
 										case visitAndTouch: {
 											SunZoo.visitAndActionUsingString(visitedCage, "touch");
+											visitedAccount.increaseSpentAmount(50);
 											break;
 										}
 										case visitAndTakeARide: {
 											SunZoo.visitAndActionUsingString(visitedCage, "takearide");
+											visitedAccount.increaseSpentAmount(200);
 											break;
-										}
-										}
-									}
-									}
-								}else
-								{
-									throw new IndexOutOfBoundsException("Out of cages, please input within: " + cageAmount);
-								}
-								
 
+										}
+										}
+									}
+									}
+									// Update visitor
+									context.getBean(AccountJdbcRepository.class).updateAccount(visitedAccount);
+								} else {
+									throw new IndexOutOfBoundsException(
+											"Out of cages, please input within: " + cageAmount);
+								}
 							}
 							}
+
+							// Update Visitor info
+							System.out.println(
+									"Spent money" + visitedAccount.getAccount() + " " + visitedAccount.getSpentMoney());
 
 						} while (visitorChoice != 2);
 
@@ -271,7 +282,7 @@ public class SunZooApplication {
 					String signupAccount = scanner.next();
 					System.out.print("Please enter sign up pwd: ");
 					String signupPwd = scanner.next();
-					Account signedupAccount = new Account(signupAccount, signupPwd);
+					VisitorAccount signedupAccount = new VisitorAccount(signupAccount, signupPwd);
 
 					// Add account to Account table
 

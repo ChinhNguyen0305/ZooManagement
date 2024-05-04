@@ -3,21 +3,22 @@ package com.SunZoo.SunZoo.account;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Account {
+public class VisitorAccount {
 	private static long ACCOUNT_ID;
-	private long id ;
+	private long id;
 	private String account;
 	private String pwd;
-	
-	//Constructor
-	//getters
-	//toString
-	//no arg constructor
-	public Account() {
-		
+	private int spentMoney = 0; // Initial balance is zero
+
+	// Constructor
+	// getters
+	// toString
+	// no arg constructor
+	public VisitorAccount() {
+
 	};
-	
-	public Account(String account, String pwd) {
+
+	public VisitorAccount(String account, String pwd) {
 		super();
 //		this.id = id;
 		this.account = account;
@@ -30,17 +31,13 @@ public class Account {
 		return id;
 	}
 
-
 	public String getAccount() {
 		return account;
 	}
 
-
 	public String getPwd() {
 		return pwd;
 	}
-	
-
 
 	public void setId(long id) {
 		this.id = id;
@@ -54,12 +51,18 @@ public class Account {
 		this.pwd = pwd;
 	}
 
+	public void increaseSpentAmount(int amount) {
+		this.spentMoney += amount;
+	}
+	
+
+	public int getSpentMoney() {
+		return spentMoney;
+	}
+
 	@Override
 	public String toString() {
 		return "Account [ id =" + id + " account=" + account + ", pwd=" + pwd + "]";
 	}
-	
-	
 
-	
 }

@@ -6,8 +6,6 @@ public interface Action {
 	
 	int getActionHealthCost();
 	
-//	int getFee();
-	
 	String getActionType();
 	
 }

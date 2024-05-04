@@ -13,6 +13,7 @@
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="com.SunZoo.SunZoo.account.Account"/>
-    <fullyQualifiedTypeName name="com.SunZoo.SunZoo.account.jdbc.AccountJdbcRepository"/>
     <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="com.SunZoo.SunZoo.account.jdbc.AccountJdbcRepository"/>
+    <fullyQualifiedTypeName name="com.SunZoo.SunZoo.account.VisitorAccount"/>
 </qualifiedTypeNameHistroy>

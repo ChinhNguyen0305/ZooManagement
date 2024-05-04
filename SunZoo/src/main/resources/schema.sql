@@ -5,6 +5,7 @@ create table account
 	id serial ,
 	account varchar(255) not null,
 	pwd varchar(255) not null,
+	spentMoney bigint, 
 	primary key(id)
 );
 

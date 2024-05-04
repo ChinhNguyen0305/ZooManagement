@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.SunZoo.SunZoo.account.Account;
+import com.SunZoo.SunZoo.account.VisitorAccount;
 
 @Component
 public class AccountJdbcCommandLineRunner implements CommandLineRunner {
@@ -15,7 +15,7 @@ public class AccountJdbcCommandLineRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//Test insert query
-		repository.insertAccount(new Account("theSun", "theSun"));
+		repository.insertAccount(new VisitorAccount("theSun", "theSun"));
 		
 	}
 

@@ -18,13 +18,13 @@ public class Zoo {
 	private ArrayList<Plan> plans = new ArrayList<Plan>();
 	private int netWorth;
 
-	//Jdbc
+	// Jdbc
 	@Autowired
 	private AccountJdbcRepository repository;
-	
-	//No arg Constructor
+
+	// No arg Constructor
 	public Zoo() {
-		
+
 	}
 
 	// Constructor
@@ -44,7 +44,6 @@ public class Zoo {
 			System.out.printf("Welcome to Cage No.%d, enjoy your journey well!", visitedCage.getNo()).println();
 			this.netWorth += visitedCage.getPrice();
 			visitedCage.setAvailable(false);
-
 			// Minus health for animals in visited cage
 			for (Animal animal : visitedCage.getAnimals()) {
 				animal.minusHealthAfterVisited();
@@ -151,36 +150,6 @@ public class Zoo {
 		}
 	}
 
-//	public void visitAndActionString(int cage, String action) {
-//		Cage visitedCage = this.getCages().get(cage - 1);
-////		Action triggerAction = null;
-////		Action[] actions = visitedCage.getAction();
-//		for (Action actionInCage : visitedCage) {
-//			if (action == actionInCage.getActionType()) {
-//				triggerAction = actionInCage;
-//			}
-//		}
-//
-//		if (!visitedCage.isAvailable()) {
-//			System.out.println("Too crowded out there ");
-//		} else {
-//			System.out.printf("Welcome to Cage No.%d, enjoy your journey well!", visitedCage.getNo()).println();
-//			netWorth += visitedCage.getPrice();
-//			netWorth += visitedCage.getAction()[0].getActionFee();
-//			visitedCage.setAvailable(false);
-//			visitedCage.setHygiene(visitedCage.getHygiene() - 2);
-//
-//			// Minus health for animals in visited cage
-//			for (Animal animal : visitedCage.getAnimals()) {
-//				animal.barkWhenGetTouched();
-//				animal.minusHealthAfterVisited();
-//				animal.minusHealthAfterAction(triggerAction);
-//			}
-//		}
-//
-//	}
-
-	//
 	public void addCage(Cage cage) {
 		Cage.number += 1;
 		this.cages.add(cage);
