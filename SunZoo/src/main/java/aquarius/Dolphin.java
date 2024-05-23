@@ -2,7 +2,7 @@ package aquarius;
 
 import action.Action;
 
-public class Dolphin implements Aquarius {
+public class Dolphin extends Aquarius {
 
 	private String name;
 	private int age;

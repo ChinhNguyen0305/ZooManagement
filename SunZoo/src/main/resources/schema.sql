@@ -29,7 +29,7 @@ CREATE TABLE Cage
 
 --Animal table
 
-CREATE TABLE Animal
+CREATE TABLE Animal   
 (
 	_id serial,
 	animal_type  varchar(255) not null,

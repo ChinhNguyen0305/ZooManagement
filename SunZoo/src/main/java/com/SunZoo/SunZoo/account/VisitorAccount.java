@@ -8,7 +8,7 @@ public class VisitorAccount {
 	private long id;
 	private String account;
 	private String pwd;
-	private int spentMoney = 0; // Initial balance is zero
+	private int spentMoney; // Initial balance is zero
 
 	// Constructor
 	// getters

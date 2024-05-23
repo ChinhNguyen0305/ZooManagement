@@ -2,7 +2,7 @@ package terestial;
 
 import action.Action;
 
-public class Lion implements Terrestial {
+public class Lion extends Terrestial {
 	private String name;
 	private int age;
 	private int health;

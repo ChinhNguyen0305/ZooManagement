@@ -2,7 +2,7 @@ package terestial;
 
 import sunZoo.Animal;
 
-public interface Terrestial extends Animal {
-	public int getHealth();
+public abstract class Terrestial extends Animal {
+	public abstract int getHealth();
 
 }

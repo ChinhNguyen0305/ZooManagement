@@ -41,8 +41,7 @@ public class SunZooApplication {
 			Scanner scanner = new Scanner(System.in);
 			Scanner scannerForAddCage = new Scanner(System.in);
 			int initialChoice;
-
-			// Process
+			// Main Process
 			do {
 				System.out.println("WelCome to SunWord's Zoo:\nWhat do you want to do\n1. Login\n2. Sign up\n3. Exit");
 				initialChoice = scanner.nextInt();
@@ -54,8 +53,8 @@ public class SunZooApplication {
 					System.out.print("Enter your password: ");
 					String pwd = scanner.next();
 
-					// Check type of account
-					if (account.equals("admin") && pwd.equals(pwd)) {
+					// Check if an admin account
+					if (account.equals("admin") && pwd.equals("admin")) {
 						int adminChoice;
 						do {
 							System.out.println("****Welcom to SunWorldZoo****\nAdministration task");
@@ -146,10 +145,7 @@ public class SunZooApplication {
 								System.out.print("Enter specific cage: ");
 								int selectedCageNumber = scanner.nextInt();
 								Cage selectedCage = SunZoo.getCages().get(selectedCageNumber - 1);
-
-//								ArrayList<Animal> addedCageAnimal = new ArrayList<>();
 								int addedAnimalChoice;
-								// ArrayList<String> addedAnimalList = new ArrayList<String>();
 
 								do {
 									System.out.println("What kind of animals:");
@@ -189,7 +185,6 @@ public class SunZooApplication {
 
 					// Retrieve Account from DB
 					ArrayList<VisitorAccount> accountArr = context.getBean(AccountJdbcRepository.class).findAllAcc();
-					System.out.println(accountArr);
 					Boolean accountExistFlag = false;
 
 					// Check authority
@@ -215,7 +210,8 @@ public class SunZooApplication {
 							case 1: {
 								System.out.println("Choose cage to vist");
 								int visitedCage = scanner.nextInt();
-								int visitedCagePrice = SunZoo.getCages().get(visitedCage - 1).getPrice();
+								Cage visitedCage_CageType = SunZoo.getCages().get(visitedCage - 1);
+								int visitedCagePrice = visitedCage_CageType.getPrice();
 
 								final int justVisit = 1;
 								final int visitAndAction = 2;
@@ -241,11 +237,12 @@ public class SunZooApplication {
 										final int visitAndTouch = 1;
 										final int visitAndTakeARide = 2;
 										visitedAccount.increaseSpentAmount(visitedCagePrice);
-
+										
+										//Pay for activity
 										switch (selectedAction) {
 										case visitAndTouch: {
 											SunZoo.visitAndActionUsingString(visitedCage, "touch");
-											visitedAccount.increaseSpentAmount(50);
+											visitedAccount.increaseSpentAmount(30);
 											break;
 										}
 										case visitAndTakeARide: {

@@ -2,29 +2,29 @@ package sunZoo;
 
 import action.Action;
 
-public interface Animal {
-	void bark();
+public abstract class Animal {
+	public abstract void bark();
 
-	String getName();
+	public abstract String getName();
 
-	void minusHealthAfterVisited();
+	public abstract void minusHealthAfterVisited();
 
-	String toString();
+	public abstract String toString();
 
-	int getHealth();
+	public abstract int getHealth();
 
-	void plusHealthAfterFeeded();
+	public abstract void plusHealthAfterFeeded();
 
-	void minusHealthAfterAction(Action action);
+	public abstract void minusHealthAfterAction(Action action);
 
-	void barkWhenGetTouched();
+	public abstract void barkWhenGetTouched();
 
-	void setHealthToZeroWhenRiden();
+	public abstract void setHealthToZeroWhenRiden();
 
-	void barkWhenGetRiden();
+	public abstract void barkWhenGetRiden();
 
-	String getType();
+	public abstract String getType();
 	
-	int getAge();
+	public abstract int getAge();
 
 }
