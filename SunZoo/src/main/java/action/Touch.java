@@ -1,6 +1,6 @@
 package action;
 
-public class Touch implements Action {
+public class Touch extends Action {
 	private static final int healthCost = 5;
 //	private static final int visitHealthCost = 10;
 	private static final int fee = 30;

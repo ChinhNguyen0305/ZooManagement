@@ -1,6 +1,6 @@
 package action;
 
-public class Visit implements Action {
+public class Visit extends Action {
 	private static final int costHeath = 10;
 	private static final int fee = 100;
 	private static final String actionType = "visit";

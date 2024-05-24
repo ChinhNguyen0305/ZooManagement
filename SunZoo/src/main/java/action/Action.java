@@ -1,11 +1,11 @@
 package action;
 
-public interface Action {
-	
-	int getActionFee();
-	
-	int getActionHealthCost();
-	
-	String getActionType();
-	
+public abstract class Action {
+
+	public abstract int getActionFee();
+
+	public abstract int getActionHealthCost();
+
+	public abstract String getActionType();
+
 }

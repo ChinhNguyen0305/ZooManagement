@@ -2,7 +2,7 @@ package action;
 
 import sunZoo.Animal;
 
-public class TakeARide implements Action {
+public class TakeARide extends Action {
 	private static final int fee = 200;
 	private static final String actionType = "takeARide";
 	private static final int healthCost = 10;
