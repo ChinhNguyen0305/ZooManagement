@@ -72,7 +72,7 @@ public class SunZooApplication {
 								System.out.print("Insert price: ");
 								int addedPrice = scanner.nextInt();
 								int addedAnimalChoice;
-								ArrayList<Animal> addedCageAnimal = new ArrayList<>();
+								List<Animal> addedCageAnimal = new ArrayList<>();
 								// ArrayList<String> addedAnimalList = new ArrayList<String>();
 								do {
 									System.out.println("What kind of animals:");

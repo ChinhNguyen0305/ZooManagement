@@ -1,6 +1,7 @@
 package sunZoo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class Cage {
 	// Attribute
 	static int number = 1;
 	private int No;
-	private ArrayList<Animal> animals = new ArrayList<Animal>();
+	private List<Animal> animals = new ArrayList<Animal>();
 	private int price;
 	private int hygiene;
 	private boolean isAvailable = true;
@@ -28,10 +29,10 @@ public class Cage {
 
 	}
 
-	public Cage(int price, ArrayList<Animal> animal) {
+	public Cage(int price, List<Animal> addedCageAnimal) {
 		this.price = price;
 		this.hygiene = 5; // The initial hygiene is always 5
-		this.animals = animal;
+		this.animals = addedCageAnimal;
 		this.No = Cage.number;
 	}
 
@@ -61,7 +62,7 @@ public class Cage {
 		No = no;
 	}
 
-	public ArrayList<Animal> getAnimals() {
+	public List<Animal> getAnimals() {
 		return animals;
 	}
 

@@ -1,6 +1,7 @@
 package sunZoo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ public class Zoo {
 	// Attribute
 	private String name;
 	private String location;
-	private ArrayList<Cage> cages = new ArrayList<Cage>();
-	private ArrayList<Plan> plans = new ArrayList<Plan>();
+	private List<Cage> cages = new ArrayList<Cage>();
+	private List<Plan> plans = new ArrayList<Plan>();
 	private int netWorth;
 
 	// Jdbc
@@ -155,11 +156,11 @@ public class Zoo {
 		this.cages.add(cage);
 	}
 
-	public ArrayList<Cage> getCages() {
+	public List<Cage> getCages() {
 		return cages;
 	}
 
-	public ArrayList<Plan> getPlans() {
+	public List<Plan> getPlans() {
 		return plans;
 	}
 
