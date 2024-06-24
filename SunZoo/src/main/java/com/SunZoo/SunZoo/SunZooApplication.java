@@ -41,6 +41,7 @@ public class SunZooApplication {
 			Scanner scanner = new Scanner(System.in);
 			Scanner scannerForAddCage = new Scanner(System.in);
 			int initialChoice;
+
 			// Main Process
 			do {
 				System.out.println("WelCome to SunWord's Zoo:\nWhat do you want to do\n1. Login\n2. Sign up\n3. Exit");
@@ -70,7 +71,7 @@ public class SunZooApplication {
 							}
 							case 2: {
 								System.out.print("Insert price: ");
-								int addedPrice = scanner.nextInt();
+								final int addedPrice = scanner.nextInt();
 								int addedAnimalChoice;
 								List<Animal> addedCageAnimal = new ArrayList<>();
 								// ArrayList<String> addedAnimalList = new ArrayList<String>();
@@ -143,8 +144,8 @@ public class SunZooApplication {
 							}
 							case 3: {
 								System.out.print("Enter specific cage: ");
-								int selectedCageNumber = scanner.nextInt();
-								Cage selectedCage = SunZoo.getCages().get(selectedCageNumber - 1);
+								final int selectedCageNumber = scanner.nextInt();
+								final Cage selectedCage = SunZoo.getCages().get(selectedCageNumber - 1);
 								int addedAnimalChoice;
 
 								do {
@@ -177,14 +178,18 @@ public class SunZooApplication {
 									}
 									}
 								} while (addedAnimalChoice != 3);
+								break;
 
 							}
 							}
 						} while (adminChoice != 4);
+
+						break;
 					}
 
 					// Retrieve Account from DB
-					ArrayList<VisitorAccount> accountArr = context.getBean(AccountJdbcRepository.class).findAllAcc();
+					final ArrayList<VisitorAccount> accountArr = context.getBean(AccountJdbcRepository.class)
+							.findAllAcc();
 					Boolean accountExistFlag = false;
 
 					// Check authority
@@ -202,16 +207,16 @@ public class SunZooApplication {
 							System.out.println("2. Exit console.");
 
 							// Retrieve visited visitor
-							VisitorAccount visitedAccount = context.getBean(AccountJdbcRepository.class)
+							final VisitorAccount visitedAccount = context.getBean(AccountJdbcRepository.class)
 									.findByAccount(account);
 							visitorChoice = scanner.nextInt();
 
 							switch (visitorChoice) {
 							case 1: {
 								System.out.println("Choose cage to vist");
-								int visitedCage = scanner.nextInt();
-								Cage visitedCage_CageType = SunZoo.getCages().get(visitedCage - 1);
-								int visitedCagePrice = visitedCage_CageType.getPrice();
+								final int visitedCage = scanner.nextInt();
+								final Cage visitedCage_CageType = SunZoo.getCages().get(visitedCage - 1);
+								final int visitedCagePrice = visitedCage_CageType.getPrice();
 
 								final int justVisit = 1;
 								final int visitAndAction = 2;
@@ -224,7 +229,6 @@ public class SunZooApplication {
 								if (visitedCage <= cageAmount) {
 									// Action
 									switch (visitOrVisitAndAction) {
-
 									case justVisit: {
 										SunZoo.visit(visitedCage);
 										visitedAccount.increaseSpentAmount(visitedCagePrice);
@@ -237,8 +241,8 @@ public class SunZooApplication {
 										final int visitAndTouch = 1;
 										final int visitAndTakeARide = 2;
 										visitedAccount.increaseSpentAmount(visitedCagePrice);
-										
-										//Pay for activity
+
+										// Pay for activity
 										switch (selectedAction) {
 										case visitAndTouch: {
 											SunZoo.visitAndActionUsingString(visitedCage, "touch");
@@ -266,7 +270,7 @@ public class SunZooApplication {
 							// Update Visitor info
 							System.out.println(
 									"Spent money" + visitedAccount.getAccount() + " " + visitedAccount.getSpentMoney());
-
+						
 						} while (visitorChoice != 2);
 
 					} else
@@ -282,7 +286,6 @@ public class SunZooApplication {
 					VisitorAccount signedupAccount = new VisitorAccount(signupAccount, signupPwd);
 
 					// Add account to Account table
-
 					context.getBean(AccountJdbcRepository.class).insertAccount(signedupAccount);
 					break;
 				}

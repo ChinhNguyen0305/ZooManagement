@@ -83,13 +83,13 @@ public class Zoo {
 //	}
 
 	public void visitAndAction(int cage, Action action) {
-		Cage visitedCage = this.getCages().get(cage - 1);
-		String actionName = action.getActionType();
+		final Cage visitedCage = this.getCages().get(cage - 1);
+		final String actionName = action.getActionType();
+		final int minusHygineneOnVisit = 2;
 		// Status change
 		visitedCage.setAvailable(false);
-		visitedCage.setHygiene(visitedCage.getHygiene() - 2);
+		visitedCage.setHygiene(visitedCage.getHygiene() - minusHygineneOnVisit);
 		// Charge
-
 		netWorth += visitedCage.getPrice();
 
 		for (Animal animal : visitedCage.getAnimals()) {
@@ -112,19 +112,15 @@ public class Zoo {
 	}
 
 	public void visitAndActionUsingString(int cage, String action) {
-		Cage visitedCage = this.getCages().get(cage - 1);
-		String actionToLower = action.toLowerCase();
+		final Cage visitedCage = this.getCages().get(cage - 1);
+		final String actionToLower = action.toLowerCase();
 //		System.out.println(actionToLower);
 		Action triggeredAction = null;
 		for (Action theAction : visitedCage.getAction()) {
 			if (theAction.getActionType().toLowerCase().equals(action.toLowerCase())) {
-//				System.out.println("actionn to lower: " + actionToLower);
-//				System.out.println("For's action: " + theAction.getActionType());
-//				System.out.println("For's action to lowerCase : " + theAction.getActionType().toLowerCase());
 				triggeredAction = theAction;
 			}
 		}
-
 		// Status change
 		visitedCage.setAvailable(false);
 		visitedCage.setHygiene(visitedCage.getHygiene() - 2);
@@ -197,7 +193,7 @@ public class Zoo {
 
 	@Override
 	public String toString() {
-		return "Zoo \nZoo's Cages\n" + cages + "netWorth=" + netWorth;
+		return "Zoo \nZoo's Cages\n" + cages.toString() + "netWorth=" + netWorth;
 	}
 
 	public void addAnimalToCage(Animal animal, int Cage) {
